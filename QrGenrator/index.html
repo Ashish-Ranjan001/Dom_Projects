@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qr Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <p>Enter Your Text</p>
+        <input type="text" placeholder="Tect or Url" id="qrtext">
+        <div id="img">
+            <img src="" id="qrImage">
+        </div>
+        <button onclick="GenerateQr()">Generate</button>
+    </div>
+<script>
+let img =document.getElementById("img")
+let qrImage =document.getElementById("qrImage")
+let qrtext =document.getElementById("qrtext")
+
+function GenerateQr(){
+   if(qrtext.value.length>0){
+    qrImage.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='+qrtext.value;
+    img.classList.add("show-img");
+   }else{
+    qrtext.classList.add('error');
+    setTimeout(()=>{
+        qrtext.classList.remove('error')
+    },1000)
+   }
+}
+
+</script>
+
+
+</body>
+</html>
